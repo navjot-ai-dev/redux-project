@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import { useDispatch } from "react-redux";
+import { setQuery } from '../redux/features/searchslice';
 const Search = () => {
 
 
@@ -9,7 +10,7 @@ const Search = () => {
     settext(e.target.value)
   }
 
-  const dispatch = useDispa
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -17,6 +18,7 @@ const Search = () => {
       {
         e.preventDefault();
         console.log('form submitted');
+        dispatch(setQuery(text))
         
         settext('');
         
