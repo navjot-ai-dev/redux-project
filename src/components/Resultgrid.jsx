@@ -1,4 +1,4 @@
-import React from 'react'
+import {FetchPhotos,Fetchvideos,Fetchggif} from "../api/mediaApi";
 
 const Resultgrid = () => {
   return (
