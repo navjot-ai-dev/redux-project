@@ -17,7 +17,6 @@ const Search = () => {
      <form onSubmit={(e) => 
       {
         e.preventDefault();
-        console.log('form submitted');
         dispatch(setQuery(text))
         
         settext('');

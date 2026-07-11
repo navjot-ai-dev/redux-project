@@ -4,7 +4,7 @@ import { setActiveTab } from '../redux/features/searchslice';
 
 const Tabs = () => {
        
-    const Tabs = ['Photos','Videos','GIFs']
+    const Tabs = ['photos','videos','gif']
   const dispatch = useDispatch();
  const activeTab = useSelector((state)=>state.search.activeTab)
 
@@ -14,7 +14,6 @@ const Tabs = () => {
             return <button className={`${activeTab===elem?'bg-blue-600':'bg-gray-700'} px-7 py-4 cursor-pointer rounded-xl uppercase active:scale-90`}
             onClick={() =>{
                 dispatch(setActiveTab(elem))
-                console.log(elem);
                 
             }}
              key={idx}>
