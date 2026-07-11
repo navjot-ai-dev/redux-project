@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import {FetchPhotos,Fetchvideos,Fetchggif} from "../api/mediaApi";
 import {setQuery,setError,setLoading,setResults,setActiveTab  } from "../redux/features/searchslice";
 import { useDispatch,useSelector } from "react-redux";
+import ResultCard from "./ResultCard";
 
 const Resultgrid = () => {
 
@@ -10,9 +11,16 @@ const Resultgrid = () => {
   const { query, error, loading, results, activeTab } = useSelector((store) => store.search);
 
   useEffect(function () {
+   
+     if (!query) {
+      return 
+     }
+
     const getData = async () => {
 
      try {
+          dispatch(setLoading())
+
        let data = []
       
       if(activeTab == 'photos'){
@@ -58,9 +66,22 @@ const Resultgrid = () => {
     getData();
   
   },[query,activeTab])
+
+  if (error) {
+    return <h1>Error</h1>
+  }
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
    
   return (
-    <div> </div>
+    <div>
+      {results.map((item,idx) => {
+         return <div key={idx}>
+          <ResultCard />
+         </div>
+      })}
+       </div>
   )
 }
 
