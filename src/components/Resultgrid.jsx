@@ -12,7 +12,8 @@ const Resultgrid = () => {
   useEffect(function () {
     const getData = async () => {
 
-      let data
+     try {
+       let data = []
       
       if(activeTab == 'photos'){
         let response = await FetchPhotos(query)
@@ -47,6 +48,11 @@ const Resultgrid = () => {
 
      
       dispatch(setResults(data));
+      
+     } catch (err) {
+       dispatch(setError(err))
+     }
+
     }
 
     getData();
