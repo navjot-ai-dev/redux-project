@@ -31,6 +31,7 @@ const Resultgrid = () => {
           alt_description: item.alt_description,  
           thumbnail: item.urls.thumb,
           src: item.urls.full,
+          url: item.links.html,
         }))
       }
       if(activeTab == 'videos'){
@@ -40,7 +41,9 @@ const Resultgrid = () => {
           type: 'video',      
           alt_description:item.user.name || 'video' ,
           thumbnail:item.image ,
-          src:item.url ,
+          src:item.video_files[0].link ,
+          url:item.url
+          
         }))
       }
       if(activeTab == 'gif'){
@@ -51,6 +54,7 @@ const Resultgrid = () => {
           alt_description: item.title,
           thumbnail: item.media_formats.tinygif.url,
           src: item.media_formats.gif.url,
+          url:item.url
         })) 
       }
 
@@ -75,10 +79,10 @@ const Resultgrid = () => {
   }
    
   return (
-    <div>
+    <div className="flex flex-wrap justify-center px-10 py-20 gap-5 overflow-auto">
       {results.map((item,idx) => {
-         return <div key={idx}>
-          <ResultCard />
+         return <div  key={idx}>
+         <ResultCard  item={item} />
          </div>
       })}
        </div>
