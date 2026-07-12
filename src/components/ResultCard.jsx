@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const ResultCard = ({ item }) => {
 
@@ -15,7 +15,7 @@ const ResultCard = ({ item }) => {
      </div>
      </a>
      <div id='bottom' className='flex gap-2 justify-between items-center w-full p-4 absolute bottom-0 text-white'>
-      <h2 className='text-sm font-semibold capitalize'>
+      <h2 className='text-sm font-semibold capitalize h-14 overflow-hidden'>
         {item.alt_description}
         </h2>
         <button className='bg-indigo-600 hover:bg-indigo-900 text-white font-semibold py-1 px-2 rounded'>

@@ -25,8 +25,8 @@ const Search = () => {
          <input
          required
          type="text" placeholder='Search anything...' value={text}
-         onChange={search} className=' border-2 px-4 py-2 text-xl w-full mx-10 rounded-xl ' />
-         <button className=' border-2 px-4 py-2 text-xl cursor-pointer rounded-xl active:scale-75'>Search</button>
+         onChange={search} className=' border-2 px-4 py-2 text-xl w-full mx-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 ' />
+         <button className=' border-2 px-4 py-2 text-xl cursor-pointer rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500s active:scale-75'>Search</button>
      </form>
 
     </div>
