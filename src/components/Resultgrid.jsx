@@ -102,7 +102,7 @@ const Resultgrid = () => {
           </div>
         ) : (
           results.map((item, idx) => {
-            return <div key={idx} className='animate-fade-in' style={{ animationDelay: `${idx * 0.05}s` }}>
+            return <div key={idx} className='flex items-center justify-center'>
               <ResultCard item={item} />
             </div>
           })

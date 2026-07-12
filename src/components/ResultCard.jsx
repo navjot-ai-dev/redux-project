@@ -2,8 +2,16 @@
 
 const ResultCard = ({ item }) => {
 
-  
+  const addToSaved = () => {
+    let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+    savedItems.push(item);
+    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+    console.log(savedItems);
+  }
+
   return (
+      
+
     <div className='w-[35vh] h-80 relative bg-white rounded-xl '>
        <a target="_blank" href={item.url}>
      <div className=' h-80 '>
@@ -18,7 +26,7 @@ const ResultCard = ({ item }) => {
       <h2 className='text-sm font-semibold capitalize h-14 overflow-hidden'>
         {item.alt_description}
         </h2>
-        <button className='bg-indigo-600 hover:bg-indigo-900 text-white font-semibold py-1 px-2 rounded'>
+        <button onClick={addToSaved} className='bg-indigo-600 hover:bg-indigo-900 text-white font-semibold py-1 px-2 rounded'>
           save
         </button>
      </div>
