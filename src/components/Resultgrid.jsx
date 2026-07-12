@@ -72,20 +72,43 @@ const Resultgrid = () => {
   },[query,activeTab])
 
   if (error) {
-    return <h1>Error</h1>
+    return (
+      <div className='min-h-screen flex items-center justify-center'>
+        <div className='glass-effect-strong px-8 py-12 rounded-2xl text-center max-w-md animate-fade-in'>
+          <div className='text-4xl mb-4'>⚠️</div>
+          <h1 className='text-2xl font-bold text-red-400 mb-2'>Oops! Error Occurred</h1>
+          <p className='text-gray-300'>Something went wrong while fetching your results. Please try again.</p>
+        </div>
+      </div>
+    )
   }
   if (loading) {
-    return <h1>Loading...</h1>
+    return (
+      <div className='min-h-screen flex flex-col items-center justify-center gap-6'>
+        <div className='spinner'></div>
+        <div className='glass-effect px-6 py-4 rounded-xl'>
+          <p className='text-lg font-semibold text-indigo-300 animate-pulse'>Loading amazing content...</p>
+        </div>
+      </div>
+    )
   }
    
   return (
-    <div className="flex flex-wrap justify-center px-10 py-20 gap-5 overflow-auto">
-      {results.map((item,idx) => {
-         return <div  key={idx}>
-         <ResultCard  item={item} />
-         </div>
-      })}
-       </div>
+    <div className='px-6 py-12 min-h-screen '>
+      <div id="card" className='flex flex-wrap justify-center gap-6 max-w-full '>
+        {results.length === 0 ? (
+          <div className='col-span-full flex items-center justify-center py-20'>
+            <p className='text-gray-400 text-lg'>No results found. Try searching for something else.</p>
+          </div>
+        ) : (
+          results.map((item, idx) => {
+            return <div key={idx} className='animate-fade-in' style={{ animationDelay: `${idx * 0.05}s` }}>
+              <ResultCard item={item} />
+            </div>
+          })
+        )}
+      </div>
+    </div>
   )
 }
 
