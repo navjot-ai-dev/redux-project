@@ -6,7 +6,7 @@ const PEXELS_KEY = import.meta.env.VITE_PEXELS_KEY;
 const KILPY_KEY = import.meta.env.VITE_KILPY_KEY;
 
 
-export async function FetchPhotos(query,page=1,per_page=20){
+export async function FetchPhotos(query,page=1,per_page=40){
    const res = await axios.get(`https://api.unsplash.com/search/photos`,
     {
       params:{query,page,per_page},
@@ -19,7 +19,7 @@ export async function FetchPhotos(query,page=1,per_page=20){
 } 
 
 
-export async function Fetchvideos(query,per_page=20){
+export async function Fetchvideos(query,per_page=40){
    const res = await axios.get(`https://api.pexels.com/videos/search`,
     {
       params:{query,per_page},
@@ -36,7 +36,7 @@ export async function Fetchggif(query){
     params: {
       q: query,
       key: KILPY_KEY,
-      limit: 20,
+      limit: 50,
     },
   }
    );
