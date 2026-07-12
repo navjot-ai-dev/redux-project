@@ -1,12 +1,15 @@
+import { useDispatch } from 'react-redux';
+import { addCollection } from '../redux/features/collection';
 
 
 const ResultCard = ({ item }) => {
 
+  const dispatch = useDispatch();
+
   const addToSaved = () => {
-    let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
-    savedItems.push(item);
-    localStorage.setItem('savedItems', JSON.stringify(savedItems));
-    console.log(savedItems);
+
+    dispatch(addCollection(item))
+
   }
 
   return (
