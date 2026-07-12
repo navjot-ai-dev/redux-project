@@ -57,8 +57,23 @@ const CollectionSlice = createSlice({
              theme: "dark",
             transition: Zoom,
  });
+          },
+
+          clearToast:()=>{
+            toast.error('Collection cleared!❌', {
+           position: "top-center",
+            autoClose: 2000,
+              hideProgressBar: false,
+           closeOnClick: true,
+         pauseOnHover: true,
+                draggable: true,
+           progress: undefined,
+             theme: "dark",
+            transition: Zoom,
+ });
           }
 
+           
     }
 })
 
@@ -67,7 +82,8 @@ export const{
     removeCollection,
     clearCollection,
     addedToast,
-    removeToast
+    removeToast,
+    clearToast
 } = CollectionSlice.actions
 
 export default CollectionSlice.reducer

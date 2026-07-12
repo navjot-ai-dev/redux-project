@@ -73,43 +73,44 @@ const Resultgrid = () => {
 
   if (error) {
     return (
-      <div className='min-h-screen flex items-center justify-center'>
-        <div className='glass-effect-strong px-8 py-12 rounded-2xl text-center max-w-md animate-fade-in'>
-          <div className='text-4xl mb-4'>⚠️</div>
-          <h1 className='text-2xl font-bold text-red-400 mb-2'>Oops! Error Occurred</h1>
+      <div className='flex min-h-screen items-center justify-center px-4'>
+        <div className='glass-card max-w-md rounded-2xl px-8 py-12 text-center'>
+          <div className='mb-4 text-4xl'>⚠️</div>
+          <h1 className='mb-2 text-2xl font-bold text-red-400'>Oops! Error Occurred</h1>
           <p className='text-gray-300'>Something went wrong while fetching your results. Please try again.</p>
         </div>
       </div>
-    )
+    );
   }
+
   if (loading) {
     return (
-      <div className='min-h-screen flex flex-col items-center justify-center gap-6'>
-        <div className='spinner'></div>
-        <div className='glass-effect px-6 py-4 rounded-xl'>
-          <p className='text-lg font-semibold text-indigo-300 animate-pulse'>Loading amazing content...</p>
+      <div className='flex min-h-screen flex-col items-center justify-center gap-6 px-4'>
+        <div className='h-10 w-10 animate-spin rounded-full border-4 border-green-900/30 border-t-green-400'></div>
+        <div className='glass-card rounded-xl px-6 py-4'>
+          <p className='animate-pulse text-lg font-semibold text-green-300'>Loading amazing content...</p>
         </div>
       </div>
-    )
+    );
   }
-   
+
   return (
-    <div className='px-6 py-12 min-h-screen '>
-      <div id="card" className='flex flex-wrap justify-center gap-6 max-w-full '>
+    <div className='mx-auto min-h-screen max-w-7xl px-4 py-10 sm:px-6 lg:px-10'>
+      <div className='flex flex-wrap justify-center gap-6'>
         {results.length === 0 ? (
-          <div className='col-span-full flex items-center justify-center py-20'>
-            <p className='text-gray-400 text-lg'>No results found. Try searching for something else.</p>
+          <div className='flex items-center justify-center py-20'>
+            <p className='text-lg text-gray-400'>No results found. Try searching for something else.</p>
           </div>
         ) : (
-          results.map((item, idx) => {
-            return <div key={idx} className='flex items-center justify-center'>
+          results.map((item, idx) => (
+            <div key={idx} className='flex items-center justify-center'>
               <ResultCard item={item} />
             </div>
-          })
+          ))
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Resultgrid

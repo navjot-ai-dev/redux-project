@@ -1,27 +1,28 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { setActiveTab } from '../redux/features/searchslice';
 
 const Tabs = () => {
-       
-    const Tabs = ['photos','videos','gif']
+  const tabs = ['photos', 'videos', 'gif'];
   const dispatch = useDispatch();
- const activeTab = useSelector((state)=>state.search.activeTab)
+  const activeTab = useSelector((state) => state.search.activeTab);
 
   return (
-    <div className='flex gap-5 mt-5 ml-5'>
-        {Tabs.map(function (elem,idx) {
-            return <button className={`${activeTab===elem?'bg-blue-600':'bg-gray-700'} px-7 py-4 cursor-pointer rounded-xl uppercase active:scale-90`}
-            onClick={() =>{
-                dispatch(setActiveTab(elem))
-                
-            }}
-             key={idx}>
-                {elem}
-             </button>
-        })}
+    <div className='mx-auto flex max-w-7xl flex-wrap gap-3 px-4 pb-4 sm:px-6 lg:px-10'>
+      {tabs.map((elem, idx) => {
+        const isActive = activeTab === elem;
+        return (
+          <button
+            className={`rounded-full px-5 py-2.5 text-sm font-semibold uppercase tracking-wide transition ${isActive ? 'btn-primary' : 'btn-secondary'}`}
+            onClick={() => dispatch(setActiveTab(elem))}
+            key={idx}
+          >
+            {elem}
+          </button>
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default Tabs
