@@ -11,12 +11,12 @@ const ResultCard = ({ item, theme }) => {
   };
 
   return (
-    <div className={`result-card relative h-72 w-55 min-w-55 overflow-hidden rounded-xl ${isDark ? 'border-green-800/20 bg-[#061109]' : 'border-sky-200 bg-[#fffef9]'}`}>
+    <div className={`result-card relative h-64 w-44 min-w-44 overflow-hidden rounded-xl sm:h-72 sm:w-55 sm:min-w-55 ${isDark ? 'border-green-800/20 bg-[#061109]' : 'border-sky-200 bg-[#fffef9]'}`}>
       <a target='_blank' href={item.url} className='block h-full'>
-        <div className='h-72 overflow-hidden'>
-          {item.type === 'photo' && <img src={item.src} alt={item.alt_description} className='h-72 w-full rounded-t-xl object-cover' />}
-          {item.type === 'video' && <video src={item.src} className='h-72 w-full rounded-t-xl object-cover' autoPlay muted loop />}
-          {item.type === 'gif' && <img src={item.src} alt={item.alt_description} className='h-72 w-full rounded-t-xl object-cover' />}
+        <div className='h-64 overflow-hidden sm:h-72'>
+          {item.type === 'photo' && <img src={item.src} alt={item.alt_description} className='h-64 w-full rounded-t-xl object-cover sm:h-72' />}
+          {item.type === 'video' && <video src={item.src} className='h-64 w-full rounded-t-xl object-cover sm:h-72' autoPlay muted loop />}
+          {item.type === 'gif' && <img src={item.src} alt={item.alt_description} className='h-64 w-full rounded-t-xl object-cover sm:h-72' />}
         </div>
       </a>
 
