@@ -5,18 +5,12 @@ import Tabs from "./components/tabs";
 
 
 
-const HomePage = () => {
+const HomePage = ({ theme }) => {
   return (
     <div>
-          
-         
-
-        <Search />
-
-        
-     <Tabs />
-    <Resultgrid />
-
+      <Search theme={theme} />
+      <Tabs theme={theme} />
+      <Resultgrid theme={theme} />
     </div>
   )
 }

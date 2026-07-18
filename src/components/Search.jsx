@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setQuery } from '../redux/features/searchslice';
 
-const Search = () => {
+const Search = ({ theme }) => {
   const [text, settext] = useState('');
+  const isDark = theme === 'dark';
 
   const search = (e) => {
     settext(e.target.value);
@@ -12,14 +13,14 @@ const Search = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-10'>
+    <div className='mx-auto max-w-6xl px-3 py-4 sm:px-4 lg:px-6'>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(setQuery(text));
           settext('');
         }}
-        className='glass-card glow-ring flex flex-col gap-4 rounded-2xl p-4 sm:flex-row sm:items-center sm:p-6'
+        className={`glass-card flex flex-col gap-2 rounded-2xl border p-3 sm:flex-row sm:items-center ${isDark ? 'glow-ring' : ''}`}
       >
         <input
           required
@@ -27,9 +28,9 @@ const Search = () => {
           placeholder='Search anything...'
           value={text}
           onChange={search}
-          className='w-full rounded-xl border border-green-800/50 bg-black/70 px-4 py-3 text-lg text-green-50 outline-none transition focus:border-green-400 focus:ring-2 focus:ring-green-500/30'
+          className={`w-full rounded-xl border px-3 py-2 text-sm outline-none transition focus:ring-2 ${isDark ? 'border-green-800/50 bg-black/70 text-green-50 placeholder:text-green-100/40 focus:border-green-400 focus:ring-green-500/30' : 'border-sky-200 bg-[#fffdf7] text-slate-700 placeholder:text-slate-400 focus:border-sky-400 focus:ring-sky-300/40'}`}
         />
-        <button className='btn-primary rounded-xl px-6 py-3 text-lg shadow-lg active:scale-95'>Search</button>
+        <button className={`rounded-xl px-4 py-2 text-sm font-semibold shadow-sm active:scale-95 ${isDark ? 'btn-primary' : 'bg-gradient-to-r from-sky-500 via-emerald-500 to-yellow-400 text-white'}`}>Search</button>
       </form>
     </div>
   );

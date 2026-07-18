@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { addCollection, addedToast } from '../redux/features/collection';
 
-const ResultCard = ({ item }) => {
+const ResultCard = ({ item, theme }) => {
   const dispatch = useDispatch();
+  const isDark = theme === 'dark';
 
   const addToSaved = () => {
     dispatch(addCollection(item));
@@ -10,22 +11,22 @@ const ResultCard = ({ item }) => {
   };
 
   return (
-    <div className='result-card relative h-80 w-[33vh] min-w-[250px]'>
+    <div className={`result-card relative h-72 w-55 min-w-55 overflow-hidden rounded-xl ${isDark ? 'border-green-800/20 bg-[#061109]' : 'border-sky-200 bg-[#fffef9]'}`}>
       <a target='_blank' href={item.url} className='block h-full'>
-        <div className='h-80 overflow-hidden'>
-          {item.type === 'photo' && <img src={item.src} alt={item.alt_description} className='h-80 w-full rounded-t-xl object-cover' />}
-          {item.type === 'video' && <video src={item.src} className='h-80 w-full rounded-t-xl object-cover' autoPlay muted loop />}
-          {item.type === 'gif' && <img src={item.src} alt={item.alt_description} className='h-80 w-full rounded-t-xl object-cover' />}
+        <div className='h-72 overflow-hidden'>
+          {item.type === 'photo' && <img src={item.src} alt={item.alt_description} className='h-72 w-full rounded-t-xl object-cover' />}
+          {item.type === 'video' && <video src={item.src} className='h-72 w-full rounded-t-xl object-cover' autoPlay muted loop />}
+          {item.type === 'gif' && <img src={item.src} alt={item.alt_description} className='h-72 w-full rounded-t-xl object-cover' />}
         </div>
       </a>
 
-      <div id='bottom' className='absolute bottom-0 flex w-full items-center justify-between gap-2 p-4 text-white'>
-        <h2 className='h-14 overflow-hidden text-sm font-semibold capitalize'>
+      <div id='bottom' className={`absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-linear-to-t px-3 py-3 text-sm ${isDark ? 'from-black via-black/80 to-transparent text-white' : 'from-[#1f4a3d] via-[#2d6a53]/80 to-transparent text-white'}`}>
+        <h2 className='h-12 overflow-hidden text-xs font-semibold capitalize leading-5'>
           {item.alt_description || 'Untitled media'}
         </h2>
         <button
           onClick={addToSaved}
-          className='rounded-full bg-green-500/90 px-3 py-1.5 text-sm font-semibold text-black transition hover:bg-green-400'
+          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold transition ${isDark ? 'bg-green-500/90 text-black hover:bg-green-400' : 'bg-sky-500 text-white hover:bg-sky-400'}`}
         >
           save
         </button>
